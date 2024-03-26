@@ -93,32 +93,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
 
                             <div class="wrap-input validate-input mt-4">
-                                    <input class="input" type="text" id="username" name="username" placeholder="Username">
+                                    <input class="input" type="text" id="username" name="username" placeholder="Tài khoản">
                                     <span class="focus-input"></span>
                                     <span class="symbol-input">
                                         <img src="/imgs/icons/user.png" alt="Username">
                                     </span>
                                     <p class='error'><?php echo $username_err?></p>
                                 </div>
-                                
-                                <!-- <div class="validate-input">
-                                        <span class='gender-label'>Gender:</span>
-                                        <span>
-                                            <label for="male">
-                                                <img src="/imgs/icons/male-gender.png" alt="Male gender">
-                                            </label>
-                                            <input type="radio" name="gender" id="male"  value="Male" checked>
-                                        </span>
-                                        <span>
-                                            <label for="male">
-                                                <img src="/imgs/icons/female-gender.png" alt="Female gender">
-                                            </label>
-                                            <input type="radio" name="gender" id="female" value="Female">
-                                        </span>
-                                </div> -->
         
                                 <div class="wrap-input validate-input mt-4">
-                                    <input class="input" type="password" id='password' name="password" placeholder="Password">
+                                    <input class="input" type="password" id='password' name="password" placeholder="Mật khẩu">
                                     <span class="focus-input"></span>
                                     <span class="symbol-input">
                                         <img src="/imgs/icons/padlock.png" alt="Password">
@@ -127,13 +111,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
         
                                 <div class="wrap-input validate-input mt-4">
-                                    <input class="input" type="password" id='confirm_password' name="confirm_password"
-                                        placeholder="Confirm Password">
+                                    <input class="input" type="password" id='confirm_password' name="confirm-password"
+                                        placeholder="Xác nhận lại mật khẩu">
                                     <span class="focus-input"></span>
                                     <span class="symbol-input">
                                         <img src="/imgs/icons/padlock.png" alt="Confirm Password">
                                     </span>
                                     <p class='error'><?php echo $confirm_password_err?></p>
+                                </div>
+
+                                <div class="wrap-input validate-input mt-4">
+                                        <span class="classify">Loại tài khoản bạn muốn Đăng Ký:</span>
+                                        <span>
+                                            <input type="radio" name="classify" id="patron"  value="nguoidung" checked>
+                                            <label for="patron">
+                                                Người dùng
+                                            </label>
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <input type="radio" name="classify" id="admin" value="quantrivien">
+                                            <label for="admin">
+                                                Quản trị viên
+                                            </label>
+                                        </span>
                                 </div>
         
                                 <button class="sign-form__btn mt-4" type="submit">Sign Up</button>

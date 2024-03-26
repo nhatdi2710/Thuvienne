@@ -204,3 +204,7 @@ main {
     .signup-form__content {
         flex-direction: column;
     }
+
+    #signup-form .classify {
+        display: block;
+    }
