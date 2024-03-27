@@ -137,13 +137,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </span>
                                 </div>
         
-                                <button class="sign-form__btn mt-4" type="submit">Sign Up</button>
+                                <button class="sign-form__btn mt-4" type="submit">Đăng Ký</button>
                                 <div class="container-login-form-btn mt-4">
                                 </div>
         
                                 <div class="text-center mt-4">
                                     <span>
-                                        Already signed up? <a class="txt2" href="/pages/login.php">Login</a>
+                                        Bạn đã có tài khoản? <a class="txt2" href="/pages/login.php"><b>Đăng nhập</b></a>
                                     </span>
                                 </div>
         

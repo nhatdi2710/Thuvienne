@@ -1,3 +1,39 @@
+<?php 
+    session_start();
+    require __DIR__ . '/../../src/functions.php';
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        require __DIR__ . '/../../src/db/db_connect.php';
+        
+        $check = $pdo->prepare('SELECT * FROM phanloai_taikhoan WHERE ? ');
+        $check->execute($_POST['classify']);
+
+        $success = false;
+
+        if (!empty($_POST['username']) && !empty($_POST['pass'])) {
+            if ($check == "quantv") {
+                $account = $pdo->prepare('SELECT username_qtv, password_qtv FROM tk_quantrivien');
+                $account->execute();
+
+                while ($row = $account->fetch()) {
+                    if ((strtolower($row['username_qtv']) == $_POST['username']) && ($row['password_qtv'] == $_POST['pass'])) {
+                        $_SESSION['user'] = $_POST['username'];
+                        $success = true;
+                        break;
+                    } else {
+                        $error_message = 'Tài khoản và mật khẩu không khớp!';
+                    }
+                }
+            }
+
+            if ($success) redirect("/pages/admin/show.php");
+        
+        } else {
+            $error_message = 'Hãy đảm bảo rằng bạn cung cấp đầy đủ địa chỉ email và mật khẩu!';
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- Header -->
@@ -40,6 +76,24 @@
                             </span>
                         </div>
 
+                        <div class="wrap-input validate-input mt-4">
+                            <span class="classify">Bạn là:</span>
+                            <br>
+                            <span>
+                                <input type="radio" name="classify" id="patron"  value="nguoidung" checked>
+                                <label for="patron">
+                                    Người dùng
+                                </label>
+                            </span>
+                            <br>
+                            <span>
+                                <input type="radio" name="classify" id="admin" value="quantv">
+                                    <label for="admin">
+                                        Quản trị viên
+                                </label>
+                            </span>
+                        </div>
+
                         <div class="wrap-input mt-4">
                             <button type="submit" class="sign-form__btn">Đăng Nhập</button>
                         </div>
@@ -52,7 +106,7 @@
                     </div>
 
                     <div class="col-lg-5 login-form__nav-to-signup">
-                        <a href="/pages/signup.php">Tạo tài khoản mới</a>
+                        <a href="/pages/signup.php"><b>Tạo tài khoản mới</b></a>
                     </div>
                 </div>
             </form>              
