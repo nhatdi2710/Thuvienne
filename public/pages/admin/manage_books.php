@@ -23,9 +23,14 @@ try {
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- Header -->
+<?php require __DIR__ . '/../../../src/partials/header.php' ?>
 
 <body>
-    <div class="container mt-4">
+<!-- Sub-Header -->
+<?php require __DIR__ . '/../../../src/partials/sub-header--admin.php' ?>
+
+    <main class="container mt-4">
         <h2>Quản Lý Sách</h2>
         <table class="table">
             <thead>
@@ -60,7 +65,12 @@ try {
 
             </tbody>
         </table>
-    </div>
+    </main>
+
+<!-- Footer -->
+<?php require __DIR__ . '/../../../src/partials/footer.php' ?>
+</body>
+
 </body>
 
 </html>
