@@ -27,10 +27,6 @@ try {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Quản Trị - Hiển Thị Sách</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -47,25 +43,25 @@ try {
 
         th,
         td {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
+                padding: 8px;
+                border-bottom: 1px solid #ddd;
         }
     </style>
-
 </head>
 
 <body>
-
     <div class="container">
-        <h2>Danh Sách Các Sách</h2>
+        <h2>Quản Lý Sách</h2>
         <table class="table">
             <thead>
                 <tr>
                     <th>Sách</th>
                     <th>Tác Giả</th>
-                    <th>Thể loại</th>
-                    <th>Nhà xuất bản</th>
+                    <th>Thể Loại</th>
+                    <th>Nhà Xuất Bản</th>
                     <th>Ngày Xuất Bản</th>
+                    <th>Sửa</th>
+                    <th>Xóa</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,8 +72,17 @@ try {
                         <td><?= htmlspecialchars($sach['TEN_TL']) ?></td>
                         <td><?= htmlspecialchars($sach['TEN_NXB']) ?></td>
                         <td><?= htmlspecialchars($sach['TGXB']) ?></td>
+                        <td>
+                            <a href="#">Sửa</a>
+                        </td>
+                        <td>
+                            <a href="../admin/delete_books.php?id=<? urlencode($sach['MA_SACH']) ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+
+                        </td>
                     </tr>
+
                 <?php endforeach; ?>
+
             </tbody>
         </table>
     </div>
