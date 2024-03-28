@@ -212,3 +212,13 @@ main {
     #signup-form .classify {
         display: block;
     }
+
+/* SHOW--ADMIN */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    color: #fff !important;
+    background-color: #007bff !important;
+}

@@ -14,21 +14,12 @@ switch ($req) {
         break;
 
     // Dành cho ADMIN
-    case '/admin/add':
-        require __DIR__ . '/pages/admin/add.php';
-        break;
-    case '/admin/delete':
-        require __DIR__ . '/pages/admin/add.php';
-        break;
-    case '/admin/edit':
-        require __DIR__ . '/pages/admin/add.php';
-        break;
-    case '/admin/show':
-        require __DIR__ . '/pages/admin/add.php';
+    case '/admin/trangchu':
+        require __DIR__ . '/pages/admin/show.php';
         break;
 
     // Dành cho USER
-    case '/user/show':
+    case '/user/trangchu':
         require __DIR__ . '/pages/user/show.php';
     case '/user/muon':
         require __DIR__ . '/pages/user/muon.php';
