@@ -11,11 +11,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/thongke.php">Thống Kê</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/quanly">Quản Lý Sách</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/in.php">In</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/in">In</a>
                 </li>
             </ul>
         </div>

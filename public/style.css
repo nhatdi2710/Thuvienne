@@ -19,6 +19,17 @@ main {
     min-height: 600px;
 }
 
+table {
+    width: 100%;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
 .nav-link {
     color: var(--text-color);
     transition: all 0.5s;

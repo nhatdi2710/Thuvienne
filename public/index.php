@@ -17,6 +17,12 @@ switch ($req) {
     case '/admin/trangchu':
         require __DIR__ . '/pages/admin/show.php';
         break;
+    case '/admin/quanly':
+        require __DIR__ . '/pages/admin/manage_books.php';
+        break;
+    case '/admin/delete/?id=' . $_GET['id']:
+        require __DIR__ . '/pages/admin/delete.php';
+        break;
 
     // Dành cho USER
     case '/user/trangchu':

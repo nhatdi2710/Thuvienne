@@ -4,10 +4,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         require __DIR__ . '/../../src/db/db_connect.php';
-        
-        $check = $pdo->prepare('SELECT * FROM phanloai_taikhoan WHERE ? ');
-        $check->execute($_POST['classify']);
-
+        $check = $_POST['classify'];
         $success = false;
 
         if (!empty($_POST['username']) && !empty($_POST['pass'])) {
@@ -24,9 +21,27 @@
                         $error_message = 'Tài khoản và mật khẩu không khớp!';
                     }
                 }
+
+                if ($success) redirect("/admin/trangchu");
             }
 
-            if ($success) redirect("/pages/admin/show.php");
+            if ($check == "nguoidung") {
+                $account = $pdo->prepare('SELECT username_dg, password_dg FROM tk_docgia');
+                $account->execute();
+
+                while ($row = $account->fetch()) {
+                    if ((strtolower($row['username_dg']) == $_POST['username']) && ($row['password_dg'] == $_POST['pass'])) {
+                        $_SESSION['user'] = $_POST['username'];
+                        $success = true;
+                        break;
+                    } else {
+                        $error_message = 'Tài khoản và mật khẩu không khớp!';
+                    }
+                }
+
+                if ($success) redirect("/user/trangchu");
+            }
+            
         
         } else {
             $error_message = 'Hãy đảm bảo rằng bạn cung cấp đầy đủ địa chỉ email và mật khẩu!';
@@ -114,8 +129,8 @@
     </article>
 </main>
 
-    <!-- Footer -->
-    <?php require __DIR__ . '/../../src/partials/footer.php' ?>
+<!-- Footer -->
+<?php require __DIR__ . '/../../src/partials/footer.php' ?>
 </body>
 
 </html>
