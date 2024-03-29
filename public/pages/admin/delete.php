@@ -22,12 +22,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             echo "<p>Sách với ID $id đã được xóa thành công.</p>";
         } else {
             echo "<p>Không tìm thấy sách với ID $id để xóa.</p>";
+            exit;
         }
     } catch (PDOException $e) {
         die("Có lỗi xảy ra khi xóa sách: " . $e->getMessage());
     }
 } else {
     echo "<p>ID sách không được cung cấp hoặc không hợp lệ.</p>";
+    exit;
 }
 
 // Đóng kết nối cơ sở dữ liệu

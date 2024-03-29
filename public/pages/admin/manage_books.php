@@ -40,8 +40,7 @@ try {
                     <th>Thể Loại</th>
                     <th>Nhà Xuất Bản</th>
                     <th>Ngày Xuất Bản</th>
-                    <th>Sửa</th>
-                    <th>Xóa</th>
+                    <th>Thao Tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,12 +51,9 @@ try {
                         <td><?= htmlspecialchars($sach['TEN_TL']) ?></td>
                         <td><?= htmlspecialchars($sach['TEN_NXB']) ?></td>
                         <td><?= htmlspecialchars($sach['TGXB']) ?></td>
-                        <td>
-                            <a href="#">Sửa</a>
-                        </td>
-                        <td>
-                            <a href="/admin/delete/?id=<?= $sach['MA_SACH'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
-
+                        <td class="row">
+                            <a class="nav-link col" href="/admin/thaotac/edit/?id=<?= $sach['MA_SACH'] ?>">Sửa</a>
+                            <a class="nav-link col" href="/admin/thaotac/delete/?id=<?= $sach['MA_SACH'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
                         </td>
                     </tr>
 
@@ -65,6 +61,11 @@ try {
 
             </tbody>
         </table>
+
+        <div class="row mt-4">
+            <button type="button" class="btn btn-secondary col-lg-1">Làm mới</button>
+            <a href="/admin/thaotac/add" class="nav-link col-lg-1">Thêm mới</a>
+        </div>
     </main>
 
 <!-- Footer -->

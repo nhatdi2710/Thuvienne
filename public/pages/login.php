@@ -44,7 +44,7 @@
             
         
         } else {
-            $error_message = 'Hãy đảm bảo rằng bạn cung cấp đầy đủ địa chỉ email và mật khẩu!';
+            $error_message = 'Có lỗi xảy ra!';
         }
     }
 ?>

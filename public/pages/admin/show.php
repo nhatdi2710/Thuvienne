@@ -56,6 +56,8 @@ try {
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <h2 class="mt-4">Danh Sách Các Độc Giả</h2>
 </main>
 
 <!-- Footer -->

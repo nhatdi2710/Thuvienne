@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Trang Chủ</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/trangchu">Trang Chủ</a>
                 </li>
 
                 <li class="nav-item">

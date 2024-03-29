@@ -111,6 +111,15 @@ create table TK_DOCGIA
    primary key (USERNAME_DG)
 );
 
+create table Taikhoan (
+      USERNAME varchar(30) primary key,
+      ...
+      ten_loai -> loai_taikhoan
+)
+
+$_POST['username'] -> isqtv (1,0)
+-> /admin 
+
 /*==============================================================*/
 /* Table: TK_QUANTRIVIEN                                        */
 /*==============================================================*/

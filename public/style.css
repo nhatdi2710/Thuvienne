@@ -233,3 +233,15 @@ td {
     color: #fff !important;
     background-color: #007bff !important;
 }
+
+/* QUANLY--ADMIN */
+.manage__btns .btn {
+    margin: 0 8px;
+}
+
+/* THEMSACH--ADMIN */
+.form-group {
+    margin-top: 24px;
+    width: 500px;
+}
+
