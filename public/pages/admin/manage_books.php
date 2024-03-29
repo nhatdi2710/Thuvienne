@@ -51,9 +51,9 @@ try {
                         <td><?= htmlspecialchars($sach['TEN_TL']) ?></td>
                         <td><?= htmlspecialchars($sach['TEN_NXB']) ?></td>
                         <td><?= htmlspecialchars($sach['TGXB']) ?></td>
-                        <td class="row">
-                            <a class="nav-link col" href="/admin/thaotac/edit/?id=<?= $sach['MA_SACH'] ?>">Sửa</a>
-                            <a class="nav-link col" href="/admin/thaotac/delete/?id=<?= $sach['MA_SACH'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                        <td>
+                            <a style="float: left;" class="nav-link col" href="/admin/thaotac/edit/?id=<?= $sach['MA_SACH'] ?>">Sửa</a>
+                            <a style="float: left;" class="nav-link col" href="/admin/thaotac/delete/?id=<?= $sach['MA_SACH'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
                         </td>
                     </tr>
 

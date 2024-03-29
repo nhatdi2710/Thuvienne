@@ -47,6 +47,7 @@ switch ($req) {
     }
 
     // ADMIN -- Thực hiện Thêm Sách
-    if ($req == '/admin/thaotac/add') {
+    if ($req == '/admin/thaotac/add')
         require __DIR__ . '/pages/admin/add.php';
-    }
+    if ($req == '/admin/thaotac/edit')
+        require __DIR__ . '/pages/admin/edit.php';

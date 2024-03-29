@@ -4,13 +4,13 @@ $name_err = $username_err = $email_err = $date_err = $password_err = $confirm_pa
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["fname"]))) {
-        $name_err = "Please enter your name";
+        $name_err = "Hãy điền Họ và Tên vào";
     } else {
         $name = trim($_POST["fname"]);
     }
 
     if (empty(trim($_POST["username"]))) {
-        $username_err = "Please enter your username";
+        $username_err = "Hãy điền Tài Khoản vào";
     } else {
         $username = trim($_POST["username"]);
     }
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $confirm_password = trim($_POST["confirm_password"]);
         if (empty($password_err) && ($password != $confirm_password)) {
-            $confirm_password_err = "Password did not match! Please try again.";
+            $confirm_password_err = "Mật khẩu không khớp.";
         }
     }
 }

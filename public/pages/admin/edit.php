@@ -12,23 +12,40 @@ if ($id === null) {
     exit;
 }
 
-try {
-    $query = "SELECT * FROM SACH WHERE MA_SACH = :id";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->execute();
-    $sach = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$sach) {
-        echo "Không tìm thấy sách với ID: " . htmlspecialchars($id);
+// Hiển thị Thông Tin Sách cần Cập Nhật
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    try {
+        $query = "SELECT * FROM SACH WHERE MA_SACH = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $sach = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if (!$sach) {
+            echo "Không tìm thấy sách với ID: " . htmlspecialchars($id);
+            exit;
+        }
+    } catch (PDOException $e) {
+        echo "Lỗi khi truy vấn cơ sở dữ liệu: " . $e->getMessage();
         exit;
     }
-} catch (PDOException $e) {
-    echo "Lỗi khi truy vấn cơ sở dữ liệu: " . $e->getMessage();
-    exit;
 }
 
-// Tiếp tục với việc hiển thị form chỉnh sửa sách ở đây...
+// Thực hiện Cập Nhật
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $edit = "UPDATE SACH SET TEN_SACH = ?, MA_TG = ?, STT_THELOAI = ?, MA_NXB = ?, TGXB = ? WHERE MA_SACH = ?";
+    $result = $pdo->prepare($edit);
+    $result->execute([
+        $_POST['ten_sach'],
+        $_POST['ten_tg'],
+        $_POST['ten_theloai'],
+        $_POST['ten_nxb'],
+        $_POST['tgxb'],
+        $_POST['ma_sach']
+    ]);
+
+    redirect("/admin/quanly");
+}
 ?>
 
 
@@ -47,7 +64,7 @@ try {
 
     <main class="container mt-4">
         <h2>Chỉnh Sửa Thông Tin Sách</h2>
-        <form action="edit" method="POST">
+        <form method="POST">
             <input type="hidden" name="ma_sach" value="<?= htmlspecialchars($sach['MA_SACH']) ?>">
             <div class="form-group">
                 <label for="ten_sach">Tên Sách:</label>

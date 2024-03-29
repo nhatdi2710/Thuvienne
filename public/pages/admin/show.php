@@ -33,6 +33,7 @@ try {
 
 <!-- MAIN -->
 <main class="container mt-4">
+    <h2>Chào, ...</h2>
     <h2>Danh Sách Các Sách</h2>
     <table class="table">
         <thead>
