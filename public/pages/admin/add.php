@@ -104,7 +104,7 @@ $pdo = null;
                 <!-- Thời Gian Xuất Bản -->
                 <div class="form-group">
                     <label for="tgxb">Thời Gian Xuất Bản:</label>
-                    <input class="form-control" type="date" id="tgxb" name="tgxb" required>
+                    <input class="form-control" type="number" id="tgxb" name="tgxb" required>
                 </div>
 
                 <button type="submit" class="btn btn-secondary mt-4">Thêm Sách</button>
