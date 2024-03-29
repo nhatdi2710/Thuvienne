@@ -6,6 +6,7 @@ $successMessage = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Lấy dữ liệu từ form
+    $masach = $_POST['ma_sach'];
     $tenSach = $_POST['ten_sach'];
     $maTG = $_POST['ma_tg'];
     $sttTheLoai = $_POST['stt_theloai'];
@@ -14,11 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Tạo và chuẩn bị câu lệnh SQL
-        $query = "INSERT INTO SACH (TEN_SACH, MA_TG, STT_THELOAI, MA_NXB, TGXB) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO SACH (MA_SACH, TEN_SACH, MA_TG, STT_THELOAI, MA_NXB, TGXB) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($query);
 
         // Ràng buộc giá trị và thực thi câu lệnh
-        if ($stmt->execute([$tenSach, $maTG, $sttTheLoai, $maNXB, $tgxb])) {
+        if ($stmt->execute([$masach, $tenSach, $maTG, $sttTheLoai, $maNXB, $tgxb])) {
             $successMessage = "Sách đã được thêm thành công!";
         } else {
             $successMessage = "Có lỗi xảy ra. Vui lòng thử lại.";
@@ -45,9 +46,9 @@ $pdo = null;
     <div class="container mt-4">
         <?php if ($successMessage) : ?>
             <p class="success-message"><?= $successMessage ?></p>
-            <a href="../admin/add.php" class="btn">Quay lại Trang Chủ</a>
+            <a href="/admin/trangchu" class="btn">Quay lại Trang Chủ</a>
         <?php else : ?>
-            <form action="add.php" method="post" class="form">
+            <form action="add" method="post" class="form">
                 <h2>Thêm Sách Mới</h2>
                 <div class="form-group">
                     <label for="ma_sach">Mã Sách:</label>

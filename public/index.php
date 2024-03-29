@@ -21,9 +21,6 @@ switch ($req) {
     case '/admin/quanly':
         require __DIR__ . '/pages/admin/manage_books.php';
         break;
-    case '/admin/thaotac/add':
-        require __DIR__ . '/pages/admin/add.php';
-        break;
 
     // Dành cho USER
     case '/user/trangchu':
@@ -38,11 +35,18 @@ switch ($req) {
         break;
 }
 
-// ADMIN -- Thực hiện Xóa và Sửa Sách
-if (isset($_GET['id']) && $req == '/admin/thaotac/delete/?id=' . $_GET['id']) {
-    require __DIR__ . '/pages/admin/delete.php';
-}
+// Thao Tác trên Trang
 
-if (isset($_GET['id']) && $req == '/admin/thaotac/edit/?id=' . $_GET['id']) {
-    require __DIR__ . '/pages/admin/edit.php';
-}
+    // ADMIN -- Thực hiện Xóa và Sửa Sách
+    if (isset($_GET['id']) && $req == '/admin/thaotac/delete/?id=' . $_GET['id']) {
+        require __DIR__ . '/pages/admin/delete.php';
+    }
+
+    if (isset($_GET['id']) && $req == '/admin/thaotac/edit/?id=' . $_GET['id']) {
+        require __DIR__ . '/pages/admin/edit.php';
+    }
+
+    // ADMIN -- Thực hiện Thêm Sách
+    if ($req == '/admin/thaotac/add') {
+        require __DIR__ . '/pages/admin/add.php';
+    }

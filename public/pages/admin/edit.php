@@ -47,7 +47,7 @@ try {
 
     <main class="container mt-4">
         <h2>Chỉnh Sửa Thông Tin Sách</h2>
-        <form action="/admin/edit.php" method="POST">
+        <form action="edit" method="POST">
             <input type="hidden" name="ma_sach" value="<?= htmlspecialchars($sach['MA_SACH']) ?>">
             <div class="form-group">
                 <label for="ten_sach">Tên Sách:</label>
