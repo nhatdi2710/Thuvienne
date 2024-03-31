@@ -86,6 +86,6 @@ switch ($req) {
     // ---
     
     // USER -- Đánh Dấu Sách muốn Mượn
-    if (isset($_GET['id']) && $req == '/user/thaotac/danhdau/?id=' . $_GET['id'] ) {
+    if (isset($_GET['id']) && $req == '/user/thaotac/danhdau/?id=%20' . $_GET['id'] ) {
         require __DIR__ . '/pages/user/danhdau.php';
     }

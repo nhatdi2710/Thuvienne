@@ -48,6 +48,8 @@
             </form>
         </div>
     </div> -->
+
+    <h2 class="mt-4">Sách Còn Trên Kệ:</h2>
     <div class="row">
         <div class="col">
 
@@ -56,11 +58,11 @@
                 <thead>
                     <tr>
                         <th>Mã sách</th>
-                        <th>Tên sách</th>
-                        <th>Tác giả</th>
+                        <th>Tên sách - Tác giả</th>
                         <th>Thể loại</th>
                         <th>Nhà xuất bản</th>
                         <th>Năm xuất bản</th>
+                        <th>Thao tác</th>
 
                     </tr>
                 </thead>
@@ -69,12 +71,16 @@
 
                         <tr>
                             <td><?= htmlspecialchars($row['MA_SACH']) ?></td>
-                            <td><?= htmlspecialchars($row['TEN_SACH']) ?></td>
-                            <td><?= htmlspecialchars($row['TacGia']) ?></td>
-                           
+                            <td><?= htmlspecialchars($row['TEN_SACH']) ?> - <?= htmlspecialchars($row['TacGia']) ?></td>
+                            
                             <td><?= htmlspecialchars($row['TheLoai']) ?></td>
                             <td><?= htmlspecialchars($row['NhaXuatBan']) ?></td>
                             <td><?= htmlspecialchars($row['NamXuatBan']) ?></td>
+                            <td>
+                                <a class="nav-link" href="/pages/user/danhdau.php/?id=<?= $row['MA_SACH'] ?>">
+                                    Đánh dấu
+                                </a>
+                            </td>
 
                         </tr>
 

@@ -55,6 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     }
     // }
 
+    $account_type = "";
+    // Thêm kiểm tra loại tài khoản vào đây
+    if (!isset($_POST["classify"])) {
+        $account_type_err = "Vui lòng chọn loại tài khoản.";
+    } else {
+        $account_type = $_POST["classify"];
+    }
 
 
 
@@ -67,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         empty($password_err) &&
         empty($confirm_password_err)
     ) {
-        if ($username !== null && $name !== null && $email !== null && $date !== null && $password !== null) {
+        if ($username !== null && $name !== null && $email !== null && $date !== null && $password !== null && $account_type !== null) {
 
 
 
@@ -98,24 +105,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "Tên đăng nhập này đã được sử dụng. Vui lòng chọn tên khác.";
                 } else {
                     // Nếu username chưa tồn tại, chèn vào bảng phù hợp
-                    $sql_insert = "INSERT INTO tk_docgia (USERNAME_DG, TEN_LOAI, TEN_DG, EMAIL_DG, NGAYSINH_DG, PASSWORD_DG) VALUES (:username, :account_type, :name, :email, :date, :password)";
-                    $stmt_insert = $pdo->prepare($sql_insert);
-                    $stmt_insert->bindParam(':username', $username);
-                    $stmt_insert->bindParam(':account_type', $account_type);
-                    $stmt_insert->bindParam(':name', $name);
-                    $stmt_insert->bindParam(':email', $email);
-                    $stmt_insert->bindParam(':date', $date);
-                    $stmt_insert->bindParam(':password', $password);
-                    //$stmt_insert->bindParam(':hashed_password', $hashed_password);
-                    $stmt_insert->execute();
+                    if ($account_type === 'nguoidung') {
+                        $sql_insert = "INSERT INTO tk_docgia (USERNAME_DG, TEN_LOAI, TEN_DG, EMAIL_DG, NGAYSINH_DG, PASSWORD_DG) VALUES (:username, :account_type, :name, :email, :date, :password)";
+                        $stmt_insert = $pdo->prepare($sql_insert);
+                        $stmt_insert->bindParam(':username', $username);
+                        $stmt_insert->bindParam(':account_type', $account_type);
+                        $stmt_insert->bindParam(':name', $name);
+                        $stmt_insert->bindParam(':email', $email);
+                        $stmt_insert->bindParam(':date', $date);
+                        $stmt_insert->bindParam(':password', $password);
+                        //$stmt_insert->bindParam(':hashed_password', $hashed_password);
+                        $stmt_insert->execute();
 
-                    // Thêm vào bảng the_thu_vien sau khi tài khoản nguoidung được tạo
-                    $sql_insert_card = "INSERT INTO the_thu_vien (USERNAME_DG, STT_THETV) VALUES (:username, NULL)"; // Giả sử STT_THETHUVIEN được tự động tạo
-                    $stmt_insert_card = $pdo->prepare($sql_insert_card);
-                    $stmt_insert_card->bindParam(':username', $username);
-                    $stmt_insert_card->execute();
+                        // Thêm vào bảng the_thu_vien sau khi tài khoản nguoidung được tạo
+                        $sql_insert_card = "INSERT INTO the_thu_vien (USERNAME_DG, STT_THETV) VALUES (:username, NULL)"; // Giả sử STT_THETHUVIEN được tự động tạo
+                        $stmt_insert_card = $pdo->prepare($sql_insert_card);
+                        $stmt_insert_card->bindParam(':username', $username);
+                        $stmt_insert_card->execute();
 
-                    echo "Đăng ký thành công!";
+                        echo "Đăng ký thành công!";
+                    } else {
+                        throw new Exception("Loại tài khoản không hợp lệ.");
+                    }
                 }
 
                 $pdo->commit();
@@ -200,6 +211,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <img src="/imgs/icons/padlock.png" alt="Confirm Password">
                                 </span>
                                 <p class='error'><?php echo $confirm_password_err ?></p>
+                            </div>
+
+                            <div class="wrap-input validate-input mt-4">
+                                <span class="classify">Loại tài khoản bạn muốn Đăng Ký:</span>
+                                <span>
+                                    <input type="radio" name="classify" id="patron" value="nguoidung" checked>
+                                    <label for="patron">
+                                        Người dùng
+                                    </label>
+                                </span>
+                                <br>
+
                             </div>
 
                             <button class="sign-form__btn mt-4" type="submit">Đăng Ký</button>

@@ -55,7 +55,7 @@ $pdo = null;
     <main class="container mt-4">
         <?php if ($successMessage) : ?>
             <p class="success-message"><?= $successMessage ?></p>
-            <a href="/admin/quanly" class="btn">Quay lại Trang Quan Lý</a>
+            <a href="/admin/quanly_sach" class="btn">Quay lại Trang Quan Lý</a>
         <?php else : ?>
             <form action="add" method="post" class="form">
                 <h2>Thêm Sách Mới</h2>

@@ -2,7 +2,7 @@
 
 
 require __DIR__ . '/../../../src/db/db_connect.php';
-
+require __DIR__ . '/../../../src/functions.php';
 $id = $_GET['id'] ?? null; // Lấy ID từ GET request, nếu không có thì là chuỗi rỗng
 
 if ($id === null) {
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_POST['ma_sach']
     ]);
 
-    redirect("/admin/quanly");
+    redirect("/admin/quanly_sach");
 }
 ?>
 

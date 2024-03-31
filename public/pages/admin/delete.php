@@ -66,7 +66,7 @@ $pdo = null;
 
     <main id="delete-page" class="container text-center mt-4">
         <h3 style="color: #86A789;"><?= $thongbao; ?></h3>
-        <a class="nav-link" href="/admin/quanly">Quay lại danh sách sách</a>
+        <a class="nav-link" href="/admin/quanly_sach">Quay lại danh sách sách</a>
     </main>
 </body>
 

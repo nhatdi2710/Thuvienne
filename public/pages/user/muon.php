@@ -44,7 +44,7 @@
             <?php foreach ($sachs as $sach) : ?>
                 <tr>
                     <td><?= htmlspecialchars($sach['TEN_SACH']) ?></td>
-                    <td><a href="/user/thaotac/delete" class="nav-link">Xóa</a></td>
+                    <td><a href="#" class="nav-link">Xóa</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
