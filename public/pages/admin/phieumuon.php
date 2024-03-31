@@ -41,8 +41,9 @@
 
         <form method="POST">
             <div class="row mt-4">
-                <div class="col text-center">
-                    Số phiếu: <input type="number" id="so_phieu">
+                <div class="col text-center row">
+                    <label for="so_phieu">Số phiếu:</label>
+                    <input class="form-control" type="number" id="so_phieu" name="so_phieu">
                 </div>
 
                 <div class="col text-center">
