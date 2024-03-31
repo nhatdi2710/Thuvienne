@@ -6,7 +6,7 @@ session_start();
 // Cố gắng truy vấn bảng cơ sở dữ liệu và lấy dữ liệu
 try {
     $query_sach = "
-        SELECT SACH.TEN_SACH, TAC_GIA.TEN_TG, THE_LOAI.TEN_TL, NHA_XUAT_BAN.TEN_NXB, SACH.TGXB
+        SELECT SACH.TEN_SACH, TAC_GIA.TEN_TG, THE_LOAI.TEN_TL, NHA_XUAT_BAN.TEN_NXB, SACH.TGXB, SACH.TINHTRANG
         FROM SACH
         JOIN TAC_GIA ON SACH.MA_TG = TAC_GIA.MA_TG
         JOIN THE_LOAI ON SACH.STT_THELOAI = THE_LOAI.STT_THELOAI
@@ -77,21 +77,28 @@ try {
     <table class="table">
         <thead>
             <tr>
-                <th>Sách</th>
-                <th>Tác giả</th>
+                <th>Sách - Tác giả</th>
                 <th>Thể loại</th>
                 <th>Nhà xuất bản</th>
                 <th>Năm xuất bản</th>
+                <th>Tình trạng</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($sachs as $sach) : ?>
                 <tr>
-                    <td><?= htmlspecialchars($sach['TEN_SACH']) ?></td>
-                    <td><?= htmlspecialchars($sach['TEN_TG']) ?></td>
+                    <td><?= htmlspecialchars($sach['TEN_SACH']) ?> - <?= htmlspecialchars($sach['TEN_TG']) ?></td>
                     <td><?= htmlspecialchars($sach['TEN_TL']) ?></td>
                     <td><?= htmlspecialchars($sach['TEN_NXB']) ?></td>
                     <td><?= htmlspecialchars($sach['TGXB']) ?></td>
+                    <td>
+                        <?php
+                            if ($sach['TINHTRANG'] == 1)
+                                echo "Trên kệ";
+                            else
+                                echo "Đang cho mượn";
+                        ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -118,7 +125,6 @@ try {
                         <td><?= htmlspecialchars($qtv['PASSWORD_QTV']) ?></td>
                         <td><?= htmlspecialchars($qtv['EMAIL_QTV']) ?></td>
                         <td><?= htmlspecialchars($qtv['NGAY_SINH']) ?></td>
-                        
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -1,5 +1,5 @@
 <?php
-require 'D:/hệ quan tri co sơ dư liệu/Thuvienne/src/db/db_connect.php';
+require __DIR__ . '/../../src/db/db_connect.php';
 
 $name = $username =  $email = $date = $password = $confirm_password = "";
 $name_err = $username_err = $email_err = $date_err = $password_err = $confirm_password_err = "";
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         empty($password_err) &&
         empty($confirm_password_err)
     ) {
-        if ($username !== null && $name !== null && $email !== null && $date !== null && $password !== null && $account_type !== null) {
+        if ($username !== null && $name !== null && $email !== null && $date !== null && $password !== null) {
 
 
 

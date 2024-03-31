@@ -217,6 +217,7 @@ INSERT INTO `the_thu_vien` (`STT_THETV`, `USERNAME_DG`, `NGAY_LAPTHE`, `NGAY_HET
 (15, 'user15', '2025-03-14', '2026-03-14'),
 (16, 'user16', '2025-04-15', '2026-04-15');
 select * from the_thu_vien;
+select count(stt_thetv) as sl from the_thu_vien;
 -- --------------------------------------------------------
 
 --
@@ -283,7 +284,7 @@ CREATE TABLE `danh_dau` (
     FOREIGN KEY (MA_SACH) REFERENCES sach(MA_SACH)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 select * from danh_dau;
-
+truncate table danh_dau;
 --
 -- Chỉ mục cho bảng `chi_tiet_muon_tra`
 --
@@ -407,13 +408,27 @@ ALTER TABLE `tk_docgia`
 ALTER TABLE `tk_quantrivien`
   ADD CONSTRAINT `FK_THUOC_QTV` FOREIGN KEY (`TEN_LOAI`) REFERENCES `phanloai_taikhoan` (`TEN_LOAI`);
 
---
--- Tạo Procedure delete_book
---
-drop procedure if exists delete_book $$
-create procedure delete_book(
-	in _ma_sach int
-)
+#them qtv
+delimiter $$
+create procedure them_admin (in username_qtv varchar(30), ten_loai char(10), ten_qtv varchar(30), email_qtv char(20), ngaysinh date, password_qtv char(10))
 begin
-	delete from danh_dau where danh_dau.ma_sach = _ma_sach;
-end $$
+	insert into tk_quantrivien values (username_qtv, ten_loai, ten_qtv, email_qtv, ngaysinh, password_qtv);
+end$$
+
+call them_admin ('Hello123', 'quantv', 'Nguyen Van A', 'nguyenvana@gmail.com', '2000-2-13', '123456');
+
+#Xoa qtv
+delimiter $$
+create procedure xoa_admin (in username varchar(30))
+begin
+	declare ex int;
+    select count(*) into ex from tk_quantrivien where username_qtv = username;
+    if ex > 0 then
+        delete from tk_quantrivien where username_qtv = username;
+        select 'Xoá thành công' as result;
+	else
+		select 'Không tìm thấy admin' as result;
+	end if;
+end$$
+
+call xoa_admin ('Hello123');

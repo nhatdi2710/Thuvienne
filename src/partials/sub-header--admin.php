@@ -11,15 +11,15 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/quanly">Quản Lý Sách</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/quanly_sach">Sách</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/quanly_admin">Quản Lý Quản Trị Viên</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/quanly_admin">Quản Trị Viên</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/duyet">Duyệt</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/dsyeucau">Danh Sách Yêu Cầu</a>
                 </li>
             </ul>
         </div>

@@ -18,7 +18,7 @@ switch ($req) {
     case '/admin/trangchu':
         require __DIR__ . '/pages/admin/show.php';
         break;
-    case '/admin/quanly':
+    case '/admin/quanly_sach':
         require __DIR__ . '/pages/admin/manage_books.php';
         break;
     case '/admin/quanly_admin':
