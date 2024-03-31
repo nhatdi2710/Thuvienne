@@ -15,7 +15,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/in">In</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/quanly_admin">Quản Lý Quản Trị Viên</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin/duyet">Duyệt</a>
                 </li>
             </ul>
         </div>

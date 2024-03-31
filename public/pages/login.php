@@ -14,7 +14,7 @@
 
                 while ($row = $account->fetch()) {
                     if ((strtolower($row['username_qtv']) == $_POST['username']) && ($row['password_qtv'] == $_POST['pass'])) {
-                        $_SESSION['user'] = $_POST['username'];
+                        $_SESSION['username_qtv'] = $_POST['username'];
                         $success = true;
                         break;
                     } else {
@@ -31,7 +31,7 @@
 
                 while ($row = $account->fetch()) {
                     if ((strtolower($row['username_dg']) == $_POST['username']) && ($row['password_dg'] == $_POST['pass'])) {
-                        $_SESSION['user'] = $_POST['username'];
+                        $_SESSION['username_dg'] = $_POST['username'];
                         $success = true;
                         break;
                     } else {

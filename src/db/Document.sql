@@ -103,6 +103,7 @@ CREATE TABLE `sach` (
   `TGXB` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+select * from sach;
 --
 -- Đang đổ dữ liệu cho bảng `sach`
 --
@@ -273,8 +274,15 @@ INSERT INTO `tk_quantrivien` (`USERNAME_QTV`, `TEN_LOAI`, `TEN_QTV`, `EMAIL_QTV`
 ('admin1', 'quantv', 'Nhat Duy', 'toitenla@example.com', '1990-01-01', '1');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Cấu trúc bảng cho bảng `danh_dau`
 --
+CREATE TABLE `danh_dau` (
+	`USERNAME_DG` varchar(30),
+    `MA_SACH` int(11),
+    FOREIGN KEY (USERNAME_DG) REFERENCES tk_docgia(USERNAME_DG),
+    FOREIGN KEY (MA_SACH) REFERENCES sach(MA_SACH)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+select * from danh_dau;
 
 --
 -- Chỉ mục cho bảng `chi_tiet_muon_tra`
@@ -332,6 +340,12 @@ ALTER TABLE `the_loai`
 ALTER TABLE `the_thu_vien`
   ADD PRIMARY KEY (`STT_THETV`),
   ADD KEY `FK_SO_HUU2` (`USERNAME_DG`);
+
+--
+-- AUTO_INCREMENT cho bảng `the_thu_vien`
+--
+ALTER TABLE `the_thu_vien`
+  MODIFY `STT_THETV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Chỉ mục cho bảng `tk_docgia`
@@ -393,3 +407,13 @@ ALTER TABLE `tk_docgia`
 ALTER TABLE `tk_quantrivien`
   ADD CONSTRAINT `FK_THUOC_QTV` FOREIGN KEY (`TEN_LOAI`) REFERENCES `phanloai_taikhoan` (`TEN_LOAI`);
 
+--
+-- Tạo Procedure delete_book
+--
+drop procedure if exists delete_book $$
+create procedure delete_book(
+	in _ma_sach int
+)
+begin
+	delete from danh_dau where danh_dau.ma_sach = _ma_sach;
+end $$

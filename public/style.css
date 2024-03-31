@@ -9,8 +9,6 @@
     --bo: 12px;
 }
 
-.text-center {text-align: center;}
-
 body {
     color: var(--text-color);
 }
@@ -243,4 +241,9 @@ td {
 .form-group {
     margin-top: 24px;
     width: 500px;
+}
+
+/* PHIEUMUON */
+.ds-muon {
+    margin: 0 32px;
 }

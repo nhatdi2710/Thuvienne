@@ -52,7 +52,7 @@ $pdo = null;
     <!-- Sub-Header -->
     <?php require __DIR__ . '/../../../src/partials/sub-header--admin.php' ?>
 
-    <div class="container mt-4">
+    <main class="container mt-4">
         <?php if ($successMessage) : ?>
             <p class="success-message"><?= $successMessage ?></p>
             <a href="/admin/quanly" class="btn">Quay lại Trang Quan Lý</a>
@@ -111,7 +111,7 @@ $pdo = null;
             </form>
 
         <?php endif; ?>
-    </div>
+    </main>
 
     <!-- Footer -->
     <?php require __DIR__ . '/../../../src/partials/footer.php' ?>
