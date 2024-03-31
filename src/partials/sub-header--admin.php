@@ -19,6 +19,10 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin/quanly_docgia">Độc Giả</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/admin/dsyeucau">Danh Sách Yêu Cầu</a>
                 </li>
             </ul>

@@ -24,6 +24,9 @@ switch ($req) {
     case '/admin/quanly_admin':
         require __DIR__ . '/pages/admin/manage_admin.php';
         break;
+    case '/admin/quanly_docgia':
+        require __DIR__ . '/pages/admin/manage_docgia.php';
+        break;
     case '/admin/dsyeucau':
         require __DIR__ . '/pages/admin/dsyeucau.php';
         break;
@@ -76,6 +79,10 @@ switch ($req) {
     // admin -- thêm tài khoản qtv
     if ($req == '/admin/thaotac/addadmin')
         require __DIR__ . '/pages/admin/add_admin.php';
+    // admin xóa thông tin độc giả 
+    if (isset($_GET['id']) && $req == '/admin/thaotac/delete_docgia/?id=' . $_GET['id']) {
+        require __DIR__ . '/pages/admin/delete_docgia.php';
+    }
     // ---
     
     // USER -- Đánh Dấu Sách muốn Mượn

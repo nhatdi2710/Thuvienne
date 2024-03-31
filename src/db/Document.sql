@@ -432,3 +432,52 @@ begin
 end$$
 
 call xoa_admin ('Hello123');
+
+DELIMITER $$
+--
+-- Thủ tục
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `hthiSach` ()   BEGIN
+    SELECT 
+        sach.MA_SACH, 
+        sach.TEN_SACH, 
+        the_loai.TEN_TL AS TheLoai, 
+        nha_xuat_ban.TEN_NXB AS NhaXuatBan, 
+        tac_gia.TEN_TG AS TacGia, 
+        sach.TGXB AS NamXuatBan
+    FROM sach
+    JOIN the_loai ON the_loai.STT_THELOAI = sach.STT_THELOAI
+    JOIN nha_xuat_ban ON sach.MA_NXB = nha_xuat_ban.MA_NXB
+    JOIN tac_gia ON sach.MA_TG = tac_gia.MA_TG;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sapXepSach` ()   BEGIN
+SELECT sach.MA_SACH, sach.TEN_SACH,tac_gia.TEN_TG,the_loai.TEN_TL, nha_xuat_ban.TEN_NXB, sach.TGXB
+from sach
+join the_loai on sach.STT_THELOAI = the_loai.STT_THELOAI
+JOIN tac_gia on sach.MA_TG = tac_gia.MA_TG
+join nha_xuat_ban on sach.MA_NXB = nha_xuat_ban.MA_NXB
+ORDER by sach.TEN_SACH ASC;
+
+
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `timKiemSach` (IN `in_tensach` VARCHAR(100))   BEGIN
+    SELECT 
+        sach.MA_SACH, 
+        sach.TEN_SACH, 
+        the_loai.TEN_TL AS TheLoai, 
+        nha_xuat_ban.TEN_NXB AS NhaXuatBan, 
+        tac_gia.TEN_TG AS TacGia, 
+        sach.TGXB AS NamXuatBan
+    FROM sach
+    JOIN the_loai ON the_loai.STT_THELOAI = sach.STT_THELOAI
+    JOIN nha_xuat_ban ON sach.MA_NXB = nha_xuat_ban.MA_NXB
+    JOIN tac_gia ON sach.MA_TG = tac_gia.MA_TG
+    WHERE LOWER(sach.TEN_SACH) LIKE CONCAT('%', LOWER(in_tensach), '%');
+END$$
+
+DELIMITER ;
+
+CALL timkiemSach("Dế Mèn phiêu lưu ký");

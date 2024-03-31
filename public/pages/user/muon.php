@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-secondary mt-4">Gửi yêu cầu mượn</button>
+        <button type="submit" class="btn btn-secondary mt-4" onclick="return alert('Đã gửi yêu cầu đến Quản Trị Viên. Vui lòng chờ quản trị viên duyệt và gửi cho bạn Phiếu Mượn qua E-mail.');">Gửi yêu cầu mượn</button>
     </form>
 
 </main>
